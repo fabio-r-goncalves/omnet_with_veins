@@ -11,6 +11,10 @@ RUN apt-get install -y qt5-default
 RUN apt-get install -y qtdeclarative5-dev
 RUN apt-get install -y libosgearth-dev
 RUN apt-get install -y libopenscenegraph-dev openscenegraph
-RUN cd /home && wget -O omnetpp-5.2-src-linux.tgz --referer https://omnetpp.org/omnetpp https://omnetpp.org/omnetpp/send/30-omnet-releases/2317-omnetpp-5-2-linux && tar xvfz omnetpp-5.2-src-linux.tgz && cd omnetpp-5.2 && . setenv && export PATH=/home/omnetpp-5.2/bin:$PATH && ./configure && make
-RUN cd /home && wget http://veins.car2x.org/download/veins-4.6.zip  &&  unzip veins-4.6.zip veins-4.6 
+RUN apt-get install -y gedit
+RUN cd /home && wget -O omnetpp-5.2-src-linux.tgz --referer https://omnetpp.org/omnetpp https://omnetpp.org/omnetpp/send/30-omnet-releases/2317-omnetpp-5-2-linux && tar xvfz omnetpp-5.2-src-linux.tgz && cd omnetpp-5.2
+RUN cd /home && wget http://veins.car2x.org/download/veins-4.6.zip  &&  unzip veins-4.6.zip  
+ADD ./script.sh /script.sh
+RUN chmod 777 /script.sh
 WORKDIR /home
+ENTRYPOINT ["/bin/bash","/script.sh"]
