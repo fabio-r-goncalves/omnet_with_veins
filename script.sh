@@ -1,12 +1,17 @@
 #! /bin/bash
-DIR="/home/omnetpp-5.2"
+DIR="/home/veins"
 
-#if [ "$(ls -A $DIR)" ]; then
-#echo "empty"
-#else 
-#mv /home/vsimrti-allinone/vsimrti/* /home/vsimrti
-#yes "y" | bash /home/vsimrti/bin/fed/ns3/ns3_installer.sh
+if [ "$(ls -A $DIR)" ]; then
+echo "empty"
+else 
+
+mv /home/omnetpp-5.2 /home/omnetpp
+cd /home/omnetpp && source setenv -f && export PATH=/home/omnetpp/bin:$PATH && ./configure && make
+mv /home/plexe-veins/ /home/veins
+mv /home/plexe-sumo/ /sumo
+echo "export PATH=/home/omnetpp/bin:$PATH" >> /root/.bashrc
+cd /home/veins && ./configure && make
+cd /home/sumo && make -f Makefile.cvs && ./configure && make
 chown -R 1000:1000 /home/*
-cd /home/omnetpp-5.2 && source setenv -f && export PATH=/home/omnetpp-5.2/bin:$PATH && ./configure && make
-#fi
+fi
 top -b
