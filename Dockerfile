@@ -18,6 +18,7 @@ RUN cd /home && wget -O omnetpp-5.0-src-linux.tgz --referer https://omnetpp.org/
 #RUN cd /home && wget http://veins.car2x.org/download/veins-4.6.zip  &&  unzip veins-4.6.zip  
 VOLUME /home/veins
 VOLUME /home/sumo
+VOLUME /home/omnetpp
 ADD ./script.sh /script.sh
 RUN chmod 777 /script.sh
 WORKDIR /home
