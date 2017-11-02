@@ -14,7 +14,7 @@ RUN apt-get install -y libopenscenegraph-dev openscenegraph
 RUN apt-get install -y gedit
 RUN apt-get install -y git
 RUN cd /home && git clone https://github.com/michele-segata/plexe-veins.git && git clone https://github.com/michele-segata/plexe-sumo.git
-RUN cd /home && wget -O omnetpp-5.2-src-linux.tgz --referer https://omnetpp.org/omnetpp https://omnetpp.org/omnetpp/send/30-omnet-releases/2317-omnetpp-5-2-linux && tar xvfz omnetpp-5.2-src-linux.tgz && cd omnetpp-5.2
+RUN cd /home && wget -O omnetpp-5.0-src-linux.tgz --referer https://omnetpp.org/omnetpp https://omnetpp.org/component/jdownloads/send/32-release-older-versions/2305-omnetpp-50-linux && tar xvfz omnetpp-5.0-src-linux.tgz
 #RUN cd /home && wget http://veins.car2x.org/download/veins-4.6.zip  &&  unzip veins-4.6.zip  
 VOLUME /home/veins
 VOLUME /home/sumo
