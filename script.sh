@@ -2,18 +2,20 @@
 DIR="/home/omnetpp"
 
 if [ "$(ls -A $DIR)" ]; then
-echo "empty"
+echo "omnet dir already exists"
 else 
 	echo "Moving omnet"
 	shopt -s dotglob
 	mv /home/omnetpp-5.0/* /home/omnetpp
 	echo "installing omnet"
 	cd /home/omnetpp && source setenv -f && export PATH=/home/omnetpp/bin:$PATH && ./configure && make
+	echo "exporting omnet path"
+	echo "export PATH=/home/omnetpp/bin:\$PATH" >> /root/.bashrc
 fi
 DIR="/home/veins"
 
 if [ "$(ls -A $DIR)" ]; then
-echo "empty"
+echo "veins dir already exists"
 else 
 	echo "moving veins"
 	shopt -s dotglob
@@ -25,17 +27,19 @@ fi
 DIR="/home/sumo"
 
 if [ "$(ls -A $DIR)" ]; then
-echo "empty"
+echo "sumo dir already exists"
 else 
 	shopt -s dotglob
 	echo "moving sumo"
 	mv /home/plexe-sumo/* /home/sumo
 	echo "installing sumo"
 	cd /home/sumo && git checkout plexe-2.0 && cd sumo && make -f Makefile.cvs && ./configure && make
+	echo "exporting sumo path"
+	echo "export PATH=/home/sumo/sumo/bin:\$PATH" >> /root/.bashrc
 fi
 
-echo "exporting paths"
-echo "export PATH=/home/omnetpp/bin:$PATH" >> /root/.bashrc
-echo "export PATH=/home/sumo/sumo/bin:$PATH" >> /root/.bashrc
+
+
+
 chown -R 1000:1000 /home/*
 top -b		
