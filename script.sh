@@ -24,7 +24,7 @@ else
 	cd /home/veins && git checkout plexe-2.0 && ./configure && make
 
 fi
-DIR="/home/sumo"
+DIR="/home/sumo/sumo"
 
 if [ "$(ls -A $DIR)" ]; then
 echo "sumo dir already exists"
