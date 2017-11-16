@@ -6,7 +6,8 @@ echo "omnet dir already exists"
 else 
 	echo "Moving omnet"
 	shopt -s dotglob
-	mv /home/omnetpp-5.0/* /home/omnetpp
+	cp -R /home/omnetpp-5.0/* /home/omnetpp
+	rm -rf /home/omnetpp-5.0
 	echo "installing omnet"
 	cd /home/omnetpp && source setenv -f && export PATH=/home/omnetpp/bin:$PATH && ./configure && make
 	echo "exporting omnet path"
